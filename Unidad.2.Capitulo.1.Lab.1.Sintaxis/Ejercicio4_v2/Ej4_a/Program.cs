@@ -15,7 +15,5 @@
             {
                 Console.WriteLine("Elemento número " + i + ": " + arreglo[i]);
             }
-
-            Console.WriteLine("Hola GitHub!");
     }
 }

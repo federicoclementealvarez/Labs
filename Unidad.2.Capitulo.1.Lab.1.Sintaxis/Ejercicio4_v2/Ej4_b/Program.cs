@@ -19,7 +19,7 @@
         cincos = SumarCantidades(ref numero, 5);
         cuatros = SumarCantidades(ref numero, 4);
         unidades = SumarCantidades(ref numero, 1);
-        Console.WriteLine(numero);
+  
         ConcatenarCantidades(ref roman, miles, "M");
         ConcatenarCantidades(ref roman, novecientos, "CM");
         ConcatenarCantidades(ref roman, quinientos, "D");
