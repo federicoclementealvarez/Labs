@@ -2,51 +2,37 @@
 {
     private static void Main(string[] args)
     {
-        int numero, miles, novecientos, quinientos, cuatrocientos, cientos, noventas, cincuentas, cuarentas, decenas, nueves, cincos, cuatros, unidades;
+        int numero;
         string roman="";
         Console.WriteLine("Ingrese el número a convertir: ");
         numero = int.Parse(Console.ReadLine());
-        miles = SumarCantidades(ref numero,1000);
-        novecientos = SumarCantidades(ref numero, 900);
-        quinientos = SumarCantidades(ref numero, 500);
-        cuatrocientos = SumarCantidades(ref numero, 400);
-        cientos = SumarCantidades(ref numero, 100);
-        noventas = SumarCantidades(ref numero, 90);
-        cincuentas = SumarCantidades(ref numero, 50);
-        cuarentas = SumarCantidades(ref numero, 40);
-        decenas = SumarCantidades(ref numero, 10);
-        nueves = SumarCantidades(ref numero, 9);
-        cincos = SumarCantidades(ref numero, 5);
-        cuatros = SumarCantidades(ref numero, 4);
-        unidades = SumarCantidades(ref numero, 1);
-  
-        ConcatenarCantidades(ref roman, miles, "M");
-        ConcatenarCantidades(ref roman, novecientos, "CM");
-        ConcatenarCantidades(ref roman, quinientos, "D");
-        ConcatenarCantidades(ref roman, cuatrocientos, "CD");
-        ConcatenarCantidades(ref roman, cientos, "C");
-        ConcatenarCantidades(ref roman, noventas, "XC");
-        ConcatenarCantidades(ref roman, cincuentas, "L");
-        ConcatenarCantidades(ref roman, cuarentas, "XL");
-        ConcatenarCantidades(ref roman, decenas, "X");
-        ConcatenarCantidades(ref roman, nueves, "IX");
-        ConcatenarCantidades(ref roman, cincos, "V");
-        ConcatenarCantidades(ref roman, cuatros, "IV");
-        ConcatenarCantidades(ref roman, unidades, "I");
+        int[] numModernos = new int[] {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        string[] numRomanos = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int[] sumas = new int[13]; 
+    
+        for (int i=0; i<numModernos.Length; i++)
+        {
+            sumas[i] = SumarCantidades(ref numero, numModernos[i]);
+        }
+
+        for (int i=0;i<numRomanos.Length; i++)
+        {
+            ConcatenarCantidades(ref roman, sumas[i], numRomanos[i]);
+        }
+
         Console.WriteLine("El número convertido a romano es: "+roman);
+        Console.ReadKey();  
     }
 
     private static int SumarCantidades(ref int numero,int cantOrden)
     {
         int cont=0;
 
-       do {
-            if (numero >= cantOrden)
-            {
-                numero -= cantOrden;
-                cont++;
-            }
-        } while (numero >= cantOrden);
+       while (numero >= cantOrden)
+        {
+            numero -= cantOrden;
+            cont++;
+        }
 
         return (cont);
     }
