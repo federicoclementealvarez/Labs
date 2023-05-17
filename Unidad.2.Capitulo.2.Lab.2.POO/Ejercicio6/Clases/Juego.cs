@@ -8,20 +8,21 @@ namespace Clases
 
         public Juego()
         {
-            _record=int.MaxValue;
+            _record = int.MaxValue;
         }
         public Boolean comenzarJuego()
         {
             Console.Clear();
-            Jugada jugada = new Jugada(preguntarMaximo());
-            do{
+            JugadaAyuda jugada = new JugadaAyuda(preguntarMaximo());
+            do
+            {
                 jugada.comparar(preguntarNumero());
                 if (jugada.Adivino)
                 {
                     Console.WriteLine("Usted ha adivinado! El número era: " + jugada.Numero);
                     if (compararRecord(jugada.Intentos))
                     {
-                        Console.WriteLine("Usted ha superado el record de intentos! Ahora el record es de un mínimo de "+ _record+" intentos");
+                        Console.WriteLine("Usted ha superado el record de intentos! Ahora el record es de un mínimo de " + _record + " intentos");
                     }
                 }
                 else
@@ -46,14 +47,14 @@ namespace Clases
         private Boolean continuar()
         {
             Console.WriteLine("¿Desea seguir jugando? S/N");
-            if (Console.ReadLine() == "S") return (true);
+            if (Console.ReadLine()=="S") return (true);
             else return (false);
         }
 
         private int preguntarMaximo()
         {
             Console.WriteLine("Máximo: ");
-            return(int.Parse(Console.ReadLine()));
+            return (int.Parse(Console.ReadLine()));
         }
 
         private int preguntarNumero()
